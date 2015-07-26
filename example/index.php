@@ -4,35 +4,33 @@ echo '<h1>XConfig examples</h1>';
 
 include_once '../include/xconfig/XConfig.class.php';
 
-$config = new XConfig(file_get_contents('myconfig.conf'));
+$config = new XConfig(file_get_contents('myconfig.conf'), array('defparam1' => 'defvalue1', 'defparam2' => 'defvalue2', 'defparam3' => 'defvalue3'));
 
-echo 'content of $config:<br />';
-var_dump($config);
-echo '<br />';
+echo '<h2>content of $config:</h2>';
+print $config;
 echo '<br />';
 
-echo 'get a parameter to a local variable:<br />';
+echo '<h3>get a parameter to a local variable:</h3>';
 $param1 = $config->parameter1;
 echo $param1 . '<br />';
 echo '<br />';
 
-echo 'use directly a parameter into a sentence:<br />';
+echo '<h3>use directly a parameter into a sentence:</h3>';
 foreach($config->parameter2 as $p)
   echo $p . '<br />';
 echo '<br />';
 
-echo 'set a new parameter:<br />';
+echo '<h3>set a new parameter:</h3>';
+echo 'parameter3=value3<br />';
 $config->parameter3 = 'value3';
 echo '<br />';
 
-echo 'new content of $config:<br />';
-var_dump($config);
-echo '<br />';
+echo '<h3>new content of $config:</h3>';
+print $config;
 echo '<br />';
 
-echo 'iterate the $config:<br />';
-foreach($config as $parameter => $value)
-  echo $parameter . ' = ' . $value . '<br />';
+echo '<h3>iterate the $config:</h3>';
+print $config;
 echo '<br />';
   
 echo '<h2>Merge two config files:</h2>';
@@ -41,9 +39,8 @@ $globalconfig = new XConfig(file_get_contents('myglobalconfig.conf'));
 $localconfig = new XConfig(file_get_contents('mylocalconfig.conf'));
 $globalconfig->merge($localconfig);
 
-echo 'Content of merged configuration:<br />';
-var_dump($globalconfig);
-echo '<br />';
+echo '<h3>Content of merged configuration:</h3>';
+print $globalconfig;
 echo '<br />';
 
 ?>

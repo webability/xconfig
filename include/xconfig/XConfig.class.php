@@ -2,9 +2,6 @@
 
 /* @DESCR -- Do not edit
 
-
-/* @DESCR -- Do not edit
-
 XConfig.lib
 Contains the basic class to build a config object
 (c) 2015 Philippe Thomassigny
@@ -30,14 +27,17 @@ Changes:
 
 class XConfig implements ArrayAccess, Iterator, Countable
 {
+  const VERSION = '1.0.2';
   protected $entries = array();
 
   /* The constructor receive a data, that may be a string (to be compiled) or an array of param => value
      The string of a configuration file has the format:
      parameter=value
      one per line. If a parameter is repeated, it will be inserted as an array of values
+     The default array may contains expected values for each parameter, if they are not present.
+       a null, 0 or false value in the parameters "is" a value and the default will not be used.
   */
-  public function __construct($data)
+  public function __construct($data, $default = null)
   {
     if (is_string($data))
     { // data buffer
@@ -47,6 +47,12 @@ class XConfig implements ArrayAccess, Iterator, Countable
     {
       if (isset($data['entries']))
         $this->entries = $data['entries'];
+    }
+    if (is_array($default))
+    {
+      foreach($default as $p => $v)
+        if (!isset($this->entries[$p]))
+          $this->entries[$p] = $v;
     }
   }
 
@@ -209,7 +215,19 @@ class XConfig implements ArrayAccess, Iterator, Countable
   {
     $text = '';
     foreach($data as $k => $v)
-      $text .= $k . '=' . $v . "\n";
+    {
+      $text .= $k . '=';
+      if (is_array($v))
+      {
+        $text .= '[';
+        $first = 0;
+        foreach($v as $vx)
+          $text .= (($first++)?',':'') . $vx;
+        $text .= ']' . "<br />\n";
+      }
+      else
+        $text .= $v . "<br />\n";
+    }
     return $text;
   }
 
