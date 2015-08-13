@@ -28,12 +28,16 @@ The configuration file have the following syntax for example:
 ```
 # this file is named myconfig.conf, used in following examples
 # the # denotes a comment.
+; is also a comment
 parameter1=value1
 parameter2=value2
 parameter2=value3
 ```
 
-Note the config file is read as a STRING, always.
+As version 1.1, xconfig now accept true, on, yes as a boolean 'true' and false, off, no, none as a boolean 'false'.
+That means parameter=off is now a boolean false, and parameter=yes os now a boolean true for instance.
+
+As verion 1.0, note the config file is read as a STRING, always.
 That means parameter=0, parameter=false, parameter=123
 will be caught as "0", "false", "123", not integers or booleans
 
