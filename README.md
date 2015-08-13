@@ -35,9 +35,9 @@ parameter2=value3
 ```
 
 As version 1.1, xconfig now accept true, on, yes as a boolean 'true' and false, off, no, none as a boolean 'false'.
-That means parameter=off is now a boolean false, and parameter=yes os now a boolean true for instance.
+For instance, that means parameter=off is now a boolean false, and parameter=yes is now a boolean true.
 
-As verion 1.0, note the config file is read as a STRING, always.
+Before verion 1.0, note the config file is always read as a STRING.
 That means parameter=0, parameter=false, parameter=123
 will be caught as "0", "false", "123", not integers or booleans
 
