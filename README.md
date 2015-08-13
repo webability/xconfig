@@ -1,11 +1,16 @@
 XConfig
 =======
 
-Version 1.0.2
+Version 1.1.0
 The XConfig library is used to easily build a config object based on a descriptor file.
 
 Change History
 --------------
+
+v1.1.0:
+- Compiler now accept ';' as comment
+- Better compiler, respect '=' after first occurence as value
+- Compiler now converts 'true', 'yes', 'on' to true and 'false', 'no', 'off', 'none' to false
 
 v1.0.2:
 - Default values added
