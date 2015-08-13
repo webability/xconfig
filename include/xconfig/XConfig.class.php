@@ -237,11 +237,11 @@ class XConfig implements ArrayAccess, Iterator, Countable
         $text .= '[';
         $first = 0;
         foreach($v as $vx)
-          $text .= (($first++)?',':'') . $vx;
+          $text .= (($first++)?',':'') . (is_bool($xv)?($xv?'true':'false'):$xv);
         $text .= ']' . "<br />\n";
       }
       else
-        $text .= $v . "<br />\n";
+        $text .= (is_bool($v)?($v?'true':'false'):$v) . "<br />\n";
     }
     return $text;
   }
