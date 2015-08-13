@@ -22,12 +22,14 @@ along with Xamboo.  If not, see <http://www.gnu.org/licenses/>.
 Creation: 2012-09-23
 Changes:
   2015-07-23 Phil: First release
+  2015-08-13 Phil: Added reserved words interpretation (yes, true, no, none, null, etc)
+  2015-08-13 Phil: Added ';' as comment
 
 @End_DESCR */
 
 class XConfig implements ArrayAccess, Iterator, Countable
 {
-  const VERSION = '1.0.2';
+  const VERSION = '1.1.0';
   protected $entries = array();
 
   /* The constructor receive a data, that may be a string (to be compiled) or an array of param => value
@@ -194,17 +196,30 @@ class XConfig implements ArrayAccess, Iterator, Countable
     foreach($xtext as $line)
     {
       $line = trim($line);
-      if (!$line || substr($line, 0, 1) == '#')
+      if (!$line || substr($line, 0, 1) == '#' || substr($line, 0, 1) == ';')
         continue;
-      $xline = explode("=", $line);
-      if (!isset($lines[$xline[0]]))
-        $lines[$xline[0]] = (isset($xline[1])?$xline[1]:'');
+      if (($p = strpos($line, '=')) !== false)
+      {
+        $param = substr($line, 0, $p);
+        $value = substr($line, $p+1);
+      }
       else
       {
-        if (!is_array($lines[$xline[0]]))
-          $lines[$xline[0]] = array($lines[$xline[0]], (isset($xline[1])?$xline[1]:''));
+        $param = $line;
+        $value = null;
+      }
+      if (in_array($value, array('true', 'yes', 'on')))
+        $value = true;
+      if (in_array($value, array('false', 'no', 'off', 'none')))
+        $value = false;
+      if (!isset($lines[$param]))
+        $lines[$param] = $value;
+      else
+      {
+        if (!is_array($lines[$param]))
+          $lines[$param] = array($lines[$param], $value);
         else
-          $lines[$xline[0]][] = (isset($xline[1])?$xline[1]:'');
+          $lines[$param][] = $value;
       }
     }
     return $lines;

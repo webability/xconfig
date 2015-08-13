@@ -12,6 +12,8 @@ v1.0.2:
 - __print function made to print better the variables
 - manual more complete
 
+v1.0.1:
+- Original release
 
 User guide
 ----------
