@@ -208,14 +208,10 @@ class XConfig implements ArrayAccess, Iterator, Countable
         $param = $line;
         $value = null;
       }
-      var_dump($param);
-      var_dump($value);
-      if (in_array($value, array('true', 'yes', 'on')))
+      if (in_array($value, array('true', 'yes', 'on'), true))
         $value = true;
-      if (in_array($value, array('false', 'no', 'off', 'none')))
+      if (in_array($value, array('false', 'no', 'off', 'none'), true))
         $value = false;
-      var_dump($param);
-      var_dump($value);
       if (!isset($lines[$param]))
         $lines[$param] = $value;
       else
