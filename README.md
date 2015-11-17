@@ -1,11 +1,15 @@
 XConfig
 =======
 
-Version 1.1.0
+Version 2.0.0
 The XConfig library is used to easily build a config object based on a descriptor file.
 
 Change History
 --------------
+
+v2.0.0:
+- Now compatible with PHP7
+- Now uses namespace xconfig
 
 v1.1.0:
 - Compiler now accept ';' as comment

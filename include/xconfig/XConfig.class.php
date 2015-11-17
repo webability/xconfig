@@ -27,9 +27,11 @@ Changes:
 
 @End_DESCR */
 
-class XConfig implements ArrayAccess, Iterator, Countable
+namespace xconfig;
+
+class XConfig implements \ArrayAccess, \Iterator, \Countable
 {
-  const VERSION = '1.1.0';
+  const VERSION = '2.0.0';
   protected $entries = array();
 
   /* The constructor receive a data, that may be a string (to be compiled) or an array of param => value

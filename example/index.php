@@ -4,7 +4,7 @@ echo '<h1>XConfig examples</h1>';
 
 include_once '../include/xconfig/XConfig.class.php';
 
-$config = new XConfig(file_get_contents('myconfig.conf'), array('defparam1' => 'defvalue1', 'defparam2' => 'defvalue2', 'defparam3' => 'defvalue3'));
+$config = new \xconfig\XConfig(file_get_contents('myconfig.conf'), array('defparam1' => 'defvalue1', 'defparam2' => 'defvalue2', 'defparam3' => 'defvalue3'));
 
 echo '<h2>content of $config:</h2>';
 print $config;
@@ -35,8 +35,8 @@ echo '<br />';
   
 echo '<h2>Merge two config files:</h2>';
 
-$globalconfig = new XConfig(file_get_contents('myglobalconfig.conf'));
-$localconfig = new XConfig(file_get_contents('mylocalconfig.conf'));
+$globalconfig = new \xconfig\XConfig(file_get_contents('myglobalconfig.conf'));
+$localconfig = new \xconfig\XConfig(file_get_contents('mylocalconfig.conf'));
 $globalconfig->merge($localconfig);
 
 echo '<h3>Content of merged configuration:</h3>';
