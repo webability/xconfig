@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <phpunit bootstrap="bootstrap.php" colors="true">
-    <testsuites>
-        <testsuite name="Simple Load Test">
-            <directory>./</directory>
-        </testsuite>
-    </testsuites>
+  <filter>
+    <whitelist>
+      <directory>/include</directory>
+    </whitelist>
+  </filter>
+  <testsuite name="Simple Load Test">
+    <directory>./</directory>
+  </testsuite>
 </phpunit>
