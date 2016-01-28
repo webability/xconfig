@@ -1,11 +1,15 @@
 XConfig
 =======
 
-Version 2.0.0
+Version 2.0.1
 The XConfig library is used to easily build a config object based on a descriptor file.
 
 Change History
 --------------
+
+v2.0.1:
+- Some errors corrected in Iterator (was stopped if there was a false value in the parameter)
+- constructor and merge method enhanced
 
 v2.0.0:
 - Now compatible with PHP7
