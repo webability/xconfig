@@ -3,7 +3,7 @@
 <phpunit bootstrap="bootstrap.php" colors="true">
     <testsuites>
         <testsuite name="Simple Load Test">
-            <directory>./testunit/</directory>
+            <directory>./</directory>
         </testsuite>
     </testsuites>
 </phpunit>
