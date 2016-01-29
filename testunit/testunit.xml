@@ -5,6 +5,6 @@
     </whitelist>
   </filter>
   <testsuite name="Simple Load Test">
-    <directory>./</directory>
+    <directory>/home/sites/base5/xconfig/testunit/</directory>
   </testsuite>
 </phpunit>
