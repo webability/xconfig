@@ -2,9 +2,9 @@
 
 namespace testunit;
 
-require_once 'PHPUnit/Autoload.php';
+use PHPUnit\Framework\TestCase;
 
-class xconfigTest extends \PHPUnit_Framework_TestCase
+class xconfigTest extends TestCase
 {
 
   public function testLoad()
