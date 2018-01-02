@@ -3,11 +3,14 @@ XConfig
 
 [![Build Status](https://travis-ci.org/webability/xconfig.svg?branch=master)](https://travis-ci.org/webability/xconfig)
 
-Version 2.0.1
+Version 2.0.2
 The XConfig library is used to easily build a config object based on a descriptor file.
 
 Change History
 --------------
+
+v2.0.2:
+- Error corrected on static NEWLINE string
 
 v2.0.1:
 - Some errors corrected in Iterator (was stopped if there was a false value in the parameter)
